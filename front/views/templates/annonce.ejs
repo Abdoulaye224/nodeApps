@@ -1,0 +1,12 @@
+<%- include('../layouts/head') %> <%- include('../layouts/navbar') %>
+
+<h1>Les détails sur l'annonce : <%= annonce._id %></h1>
+
+<ul>
+  <li>Titre : <%= annonce.titre %></li>
+  <li>Description : <%= annonce.description %></li>
+  <li>Adresse : <%= annonce.adresse %></li>
+  <li>Code Postal : <%= annonce.code_postal %></li>
+  <li>Ville : <%= annonce.ville %></li>
+  <li>Prix : <%= annonce.prix %></li>
+</ul>

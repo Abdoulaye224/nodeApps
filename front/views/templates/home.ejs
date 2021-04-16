@@ -1,0 +1,54 @@
+<%- include('../layouts/head') %> <%- include('../layouts/navbar') %>
+
+<style>
+ thead tr th{
+  border: 2px solid black;
+  margin: 3px;
+  padding: 10px;
+ }
+
+ tbody tr td{
+  margin: 3px;
+  padding: 10px;
+ }
+</style>
+<h1>Home</h1>
+
+<h2>Liste des annonces</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>titre</th>
+      <th >description</th>
+      <th>adresse</th>
+      <th>code_postal</th>
+      <th>Ville</th>
+      <th>prix</th>
+      <th></th>
+      <th></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% annonces.forEach((annonce) => { %>
+    <tr>
+      <td><%= annonce.titre %></td>
+      <td><%= annonce.description %></td>
+      <td><%= annonce.adresse %></td>
+      <td ><%= annonce.code_postal %></td>
+      <td><%= annonce.ville %></td>
+      <td><%= annonce.prix %></td>
+      <td></td>
+      <td></td>
+      <td>
+       <button type="button" onclick="deleteAnnonce('<%= annonce._id %>')">
+        Supprimer
+       </button>
+       <button><a href="./update/<%= annonce._id %>">Modifier</a></button>
+       <button><a href="./<%= annonce._id %>">details</a></button>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
