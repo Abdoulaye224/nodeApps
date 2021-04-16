@@ -23,8 +23,8 @@ function createAnnonce() {
    });
 }
 
-function deleteAnnonce(id) {
- fetch(`http://localhost:2000/annonce/${id}`, {
+function deleteAnnonce(AnnonceId) {
+ fetch(`http://localhost:2000/annonce/${AnnonceId}`, {
    method: "delete",
  })
    .then(() => {
@@ -35,10 +35,10 @@ function deleteAnnonce(id) {
    });
 }
 
-function updateAnnonce(id) {
+function updateAnnonce(AnnonceId) {
  event.preventDefault();
 
- fetch(`http://localhost:2000/updateAnnonce/${id}`, {
+ fetch(`http://localhost:2000/updateAnnonce/${AnnonceId}`, {
    method: "put",
    body: JSON.stringify({
     titre: document.getElementById("titre").value,
@@ -53,7 +53,7 @@ function updateAnnonce(id) {
    },
  })
    .then(() => {
-     window.location.assign(`/${id}`);
+    window.location.assign("/");
    })
    .catch((err) => {
      throw err;

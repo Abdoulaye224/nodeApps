@@ -9,8 +9,8 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
-const getAnnonce = (id) => {
- return fetch(`http://localhost:2000/${id}`, {
+const getAnnonce = (AnnonceId) => {
+ return fetch(`http://localhost:2000/${AnnonceId}`, {
    headers: {
      "Content-Type": "application/json",
    },
@@ -33,8 +33,8 @@ app.get("/", (req, res) => {
    .then((response) => {
      return response.json();
    })
-   .then((annonces) => {
-    res.render("templates/home", { annonces });
+   .then((annonceList) => {
+    res.render("templates/home", { annonceList });
    }).catch((err) => {
     throw err;
   });
@@ -57,5 +57,5 @@ app.get("/update/:id", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("app front is succefuly start on 3000 !");
+  console.log("app front is succeffuly started on 3000 !");
 });

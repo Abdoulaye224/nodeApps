@@ -1,8 +1,10 @@
 <%- include('../layouts/head') %> <%- include('../layouts/navbar') %>
 
 <style>
+  h1{
+    text-align: center;
+  }
  thead tr th{
-  border: 2px solid black;
   margin: 3px;
   padding: 10px;
  }
@@ -11,10 +13,13 @@
   margin: 3px;
   padding: 10px;
  }
+ a{
+   text-decoration: none;
+ }
 </style>
-<h1>Home</h1>
+<h1>A C C U E I L</h1>
 
-<h2>Liste des annonces</h2>
+<h3>Liste des annonces</h3>
 
 <table>
   <thead>
@@ -31,7 +36,7 @@
     </tr>
   </thead>
   <tbody>
-    <% annonces.forEach((annonce) => { %>
+    <% annonceList.forEach((annonce) => { %>
     <tr>
       <td><%= annonce.titre %></td>
       <td><%= annonce.description %></td>

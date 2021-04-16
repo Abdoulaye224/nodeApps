@@ -19,13 +19,10 @@ const getAnnonceById = (req, res, next) =>{
 };
 
 const updateOneAnnonce = async (req, res) => {
-
- const modif = await Annonce.updateOne({ _id: req.params.id }, req.body);
-
-  if (modif.ok) {
+ const modifRequest = await Annonce.updateOne({ _id: req.params.id }, req.body);
+  if (modifRequest.ok) {
     const annonce = await Annonce.findById(req.params.id);
     res.send(annonce);
-
     return;
   }
 

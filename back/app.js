@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 
-mongoose.connect("mongodb://localhost:27017/project-db", {
+mongoose.connect("mongodb://localhost:27017/immo", {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 }).catch((error) => console.error(error)); 
