@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <script src="/socket.io/socket.io.js"></script>
+<!-- <script src="index.js"></script> -->
+</head>
+<body>
+ <h1>Chat</h1>
+ <div>
+  <h2>Utilisateurs connectés</h2>
+
+  <ul id="users"></ul>
+ </div>
+ 
+ <div>
+  <form id="form">
+   <input type="text" name="chat" id="chatMessage" />
+   <button type="submit" id="sendMessage">Envoyer</button>
+  </form>
+ </div>
+</body>
+<script>
+ const socket = io();
+
+ socket.on("user connected", (users) => {
+
+  const userList = document.getElementById("users");
+
+  users.forEach((user) => {
+   const currentUserId = user.id;
+
+   if(!document.getElementById(currentUserId)){
+   
+   const newUser = document.createElement("li");
+
+   newUser.textContent = user.username;
+   newUser.id = currentUserId;
+
+   userList.appendChild(newUser);
+   }
+  });
+ });
+
+ socket.on("user disconnected", (userId) => {
+  document.getElementById(userId).remove();
+ });
+
+ const form = document.getElementById("form");
+ const chatMessage = document.getElementById("chatMessage");
+
+ form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if(chatMessage.value !== ""){
+   socket.emit("message", chatMessage.nodeValue); //
+
+   chatMessage.value = "";
+  }
+ })
+
+
+</script>
+</html>
